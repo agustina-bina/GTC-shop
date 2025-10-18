@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTC SHOP - Periféricos Gaming</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <!-- Logo -->
+                <div class="logo">
+                    <span class="logo-main">GTC</span>
+                    <span class="logo-sub">SHOP</span>
+                </div>
+
+                <!-- Search Bar - Desktop -->
+                <div class="search-bar desktop-only">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="¿Qué estás buscando?"
+                        class="search-input"
+                    >
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="header-actions">
+                    <button class="header-btn desktop-only">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span>Ayuda</span>
+                    </button>
+                    <button class="header-btn desktop-only">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span>Mi carrito</span>
+                    </button>
+                    <button class="header-btn desktop-only">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Mi cuenta</span>
+                    </button>
+                    <button class="header-btn-icon mobile-only">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </button>
+                    <button class="header-btn-icon mobile-only">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search Bar - Mobile -->
+            <div class="search-bar mobile-only">
+                <input 
+                    type="text" 
+                    id="searchInputMobile" 
+                    placeholder="¿Qué estás buscando?"
+                    class="search-input"
+                >
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-links">
+                    <a href="#" class="nav-link">INICIO</a>
+                    <a href="#" class="nav-link active">PRODUCTOS</a>
+                    <a href="#" class="nav-link">CONTACTO</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">GTC SHOP</h1>
+            <p class="hero-subtitle">Periféricos gaming de alta calidad para llevar tu experiencia al siguiente nivel</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Filters Section -->
+            <div class="filters">
+                <div class="filters-grid">
+                    <!-- Category Filter -->
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">Todas las categorías</option>
+                        <option value="Auriculares">Auriculares</option>
+                        <option value="Teclados">Teclados</option>
+                        <option value="Mousepads">Mousepads</option>
+                        <option value="Mouses">Mouses</option>
+                        <option value="Proyectores">Proyectores</option>
+                        <option value="Parlantes">Parlantes</option>
+                        <option value="Accesorios">Accesorios</option>
+                    </select>
+
+                    <!-- Sort -->
+                    <select id="sortOrder" class="filter-select">
+                        <option value="default">Por defecto</option>
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                    </select>
+                </div>
+
+                <!-- Results count -->
+                <div id="resultsCount" class="results-count"></div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="products-grid"></div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No se encontraron productos que coincidan con tu búsqueda</p>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </main>
+
+    <script src="products-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
