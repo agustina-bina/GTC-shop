@@ -7,7 +7,7 @@ const productsData = [
     category: "Auriculares",
     price: 15999,
     description: "Auricular gamer plegable con sonido envolvente USB 7.1 para una experiencia inmersiva",
-    image: "./images-productos/H2230U.webp/",
+    image: "./images-productos/H2230U.webp",
     stock: 20,
   },
   {
