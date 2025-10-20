@@ -159,7 +159,7 @@ const productsData = [
     category: "Teclados",
     price: 18999,
     description: "Teclado mecánico compacto 60% en elegante color blanco",
-    image: "./images-productos/KB903L-WH.webp",
+    image: "./images-productos/KB903L-TWH .webp",
     stock: 10,
   },
   {
@@ -181,7 +181,7 @@ const productsData = [
     category: "Mousepads",
     price: 4999,
     description: "Mousepad extra grande de superficie lisa, ideal para setup completo",
-    image: "./images-productos/MP830.webp",
+    image: "./images-productos/Hv-mp830 Xxl.webp",
     stock: 20,
   },
   {
@@ -201,7 +201,7 @@ const productsData = [
     category: "Mousepads",
     price: 3999,
     description: "Mousepad gamer XL con superficie optimizada para gaming",
-    image: "./images-productos/MP860.webp",
+    image: "./images-productos/Hv-mp860 Xl.webp",
     stock: 20,
   },
   {
@@ -211,7 +211,7 @@ const productsData = [
     category: "Mousepads",
     price: 3999,
     description: "Mousepad gamer XL con diseño alternativo y excelente deslizamiento",
-    image: "./images-productos/MP861.webp",
+    image: "./images-productos/Hv-mp861 Xl.webp",
     stock: 20,
   },
 
@@ -223,7 +223,7 @@ const productsData = [
     category: "Mouses",
     price: 5999,
     description: "Mouse gamer con iluminación RGB y sensor de hasta 4800 DPI",
-    image: "./images-productos/MS1001S.webp",
+    image: "./images-productos/ms1001s.webp",
     stock: 40,
   },
   {
@@ -233,7 +233,7 @@ const productsData = [
     category: "Mouses",
     price: 4999,
     description: "Mouse gamer con iluminación RGB y sensor de 3600 DPI",
-    image: "./images-productos/MS1010.webp",
+    image: "./images-productos/ms1010.webp",
     stock: 60,
   },
   {
@@ -243,7 +243,7 @@ const productsData = [
     category: "Mouses",
     price: 8999,
     description: "Mouse gamer inalámbrico en elegante color blanco",
-    image: "./images-productos/MS1020WB.webp",
+    image: "./images-productos/ms1020 bl.webp",
     stock: 40,
   },
   {
@@ -253,7 +253,7 @@ const productsData = [
     category: "Mouses",
     price: 8999,
     description: "Mouse gamer inalámbrico en clásico color negro",
-    image: "./images-productos/MS1020N.webp",
+    image: "./images-productos/ms1020 ne.webp",
     stock: 40,
   },
   {
