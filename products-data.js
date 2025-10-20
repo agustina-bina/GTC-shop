@@ -149,7 +149,7 @@ const productsData = [
     category: "Teclados",
     price: 19999,
     description: "Teclado mecánico compacto 60% con carcasa transparente y switches blancos",
-    image: "./images-productos/KB903L-TWH.webp",
+    image: "./images-productos/KB903L-TWH .webp",
     stock: 10,
   },
   {
@@ -263,7 +263,7 @@ const productsData = [
     category: "Mouses",
     price: 5499,
     description: "Mouse gaming con 6 botones programables, 3600 DPI y RGB",
-    image: "./images-productos/MS1027.webp",
+    image: "./images-productos/ms1027.webp",
     stock: 60,
   },
   {
@@ -273,7 +273,7 @@ const productsData = [
     category: "Mouses",
     price: 6999,
     description: "Mouse gamer de alta precisión con sensor de 7200 DPI y RGB",
-    image: "./images-productos/MS1029.webp",
+    image: "./images-productos/ms1029.webp",
     stock: 60,
   },
   {
@@ -283,7 +283,7 @@ const productsData = [
     category: "Mouses",
     price: 11999,
     description: "Mouse gamer inalámbrico premium con 7 botones y sensor de 10000 DPI",
-    image: "./images-productos/MS966WB.webp",
+    image: "./images-productos/ms966wb.webp",
     stock: 40,
   },
   {
@@ -293,7 +293,7 @@ const productsData = [
     category: "Mouses",
     price: 9999,
     description: "Mouse gamer inalámbrico con diseño ergonómico y tecnología avanzada",
-    image: "./images-productos/MS969SE.webp",
+    image: "./images-productos/ms969.webp",
     stock: 40,
   },
 
@@ -305,7 +305,7 @@ const productsData = [
     category: "Proyectores",
     price: 89999,
     description: "Proyector profesional de alta luminosidad con 8500 lúmenes y 450 ANSI",
-    image: "./images-productos/PJ209A-PRO-EU.webp",
+    image: "./images-productos/pj209 a.webp",
     stock: 6,
   },
   {
@@ -315,7 +315,7 @@ const productsData = [
     category: "Proyectores",
     price: 69999,
     description: "Proyector HD 720p con 7500 lúmenes y 180 ANSI en color blanco",
-    image: "./images-productos/PJ217.webp",
+    image: "./images-productos/pj217.webp",
     stock: 12,
   },
 
@@ -327,7 +327,7 @@ const productsData = [
     category: "Parlantes",
     price: 12999,
     description: "Barra de sonido Bluetooth con diseño elegante en negro y ocre",
-    image: "./images-productos/SK215.webp",
+    image: "./images-productos/sk215.webp",
     stock: 20,
   },
   {
@@ -337,7 +337,7 @@ const productsData = [
     category: "Parlantes",
     price: 7999,
     description: "Parlantes gaming para escritorio con conexión USB 2.0 y potencia 2x5W",
-    image: "./images-productos/SK216.webp",
+    image: "./images-productos/sk216.webp",
     stock: 20,
   },
   {
@@ -347,7 +347,7 @@ const productsData = [
     category: "Parlantes",
     price: 11999,
     description: "Barra de sonido con Bluetooth 5.3 y potencia 2x5W",
-    image: "./images-productos/SK770BT.webp",
+    image: "./images-productos/sk770bt.webp",
     stock: 12,
   },
   {
@@ -357,7 +357,7 @@ const productsData = [
     category: "Parlantes",
     price: 5999,
     description: "Parlante portátil Bluetooth con ranura TF y jack 3.5mm en azul",
-    image: "./images-productos/SK801A.webp",
+    image: "./images-productos/sk801bt a.webp",
     stock: 40,
   },
   {
@@ -367,7 +367,7 @@ const productsData = [
     category: "Parlantes",
     price: 5999,
     description: "Parlante portátil Bluetooth con ranura TF y jack 3.5mm en negro",
-    image: "./images-productos/SK801N.webp",
+    image: "./images-productos/sk801bt n.webp",
     stock: 40,
   },
   {
@@ -377,7 +377,7 @@ const productsData = [
     category: "Parlantes",
     price: 6999,
     description: "Parlante Bluetooth multifunción con USB, AUX, SD y radio FM",
-    image: "./images-productos/SK809BT.webp",
+    image: "./images-productos/sk809bt.webp",
     stock: 40,
   },
   {
@@ -387,7 +387,7 @@ const productsData = [
     category: "Parlantes",
     price: 7999,
     description: "Parlante Bluetooth con múltiples opciones de conectividad",
-    image: "./images-productos/SK874BT.webp",
+    image: "./images-productos/sk874bt.webp",
     stock: 40,
   },
   {
@@ -397,7 +397,7 @@ const productsData = [
     category: "Parlantes",
     price: 8999,
     description: "Parlante Bluetooth colgante con AUX y ranura SD",
-    image: "./images-productos/SK903BT.webp",
+    image: "./images-productos/sk903bt.webp",
     stock: 6,
   },
 
@@ -419,7 +419,7 @@ const productsData = [
     category: "Accesorios",
     price: 14999,
     description: "Aro de luz LED profesional con trípode incluido para streaming y fotografía",
-    image: "./images-productos/ST7012PRO.webp",
+    image: "./images-productos/st7012.webp",
     stock: 15,
   },
   {
@@ -429,7 +429,7 @@ const productsData = [
     category: "Accesorios",
     price: 19999,
     description: "Masajeador de ojos inteligente para aliviar la fatiga visual",
-    image: "./images-productos/EM1601.webp",
+    image: "./images-productos/em1601.webp",
     stock: 12,
   },
   {
@@ -439,7 +439,7 @@ const productsData = [
     category: "Accesorios",
     price: 16999,
     description: "Cooler para CPU con refrigeración por aire e iluminación RGB",
-    image: "./images-productos/F2005.webp",
+    image: "./images-productos/f2005.webp",
     stock: 20,
   },
   {
@@ -449,7 +449,7 @@ const productsData = [
     category: "Accesorios",
     price: 8999,
     description: "Base refrigeradora para notebook de hasta 15.6 pulgadas con 2 coolers",
-    image: "./images-productos/HV-F2035.webp",
+    image: "./images-productos/f2035.webp",
     stock: 20,
   },
   {
@@ -459,7 +459,7 @@ const productsData = [
     category: "Accesorios",
     price: 4999,
     description: "Ventilador RGB para gabinete con iluminación personalizable",
-    image: "./images-productos/F2095.webp",
+    image: "./images-productos/f2095.webp",
     stock: 40,
   },
   {
@@ -469,7 +469,7 @@ const productsData = [
     category: "Accesorios",
     price: 13999,
     description: "Joystick Bluetooth con soporte integrado para celular, ideal para gaming móvil",
-    image: "./images-productos/G158BT-Pro.webp",
+    image: "./images-productos/g158bt.webp",
     stock: 20,
   },
   {
@@ -479,7 +479,7 @@ const productsData = [
     category: "Accesorios",
     price: 18999,
     description: "Micrófono gaming profesional con excelente calidad de audio",
-    image: "./images-productos/GK50-Pro.webp",
+    image: "./images-productos/gk50.webp",
     stock: 10,
   },
   {
@@ -489,7 +489,7 @@ const productsData = [
     category: "Accesorios",
     price: 16999,
     description: "Micrófono gaming con diseño compacto y gran calidad de sonido",
-    image: "./images-productos/GK61.webp",
+    image: "./images-productos/gk61.webp",
     stock: 20,
   },
   {
@@ -499,7 +499,7 @@ const productsData = [
     category: "Accesorios",
     price: 2999,
     description: "Aire comprimido para limpieza de equipos electrónicos y periféricos",
-    image: "./images-productos/ADG-001.webp",
+    image: "./images-productos/adg001.webp",
     stock: 24,
   },
   {
@@ -509,7 +509,7 @@ const productsData = [
     category: "Accesorios",
     price: 3499,
     description: "Cable HDMI 2.0 de alta velocidad, soporta 4K a 60Hz",
-    image: "./images-productos/CABLE-HDMI.webp",
+    image: "./images-productos/cable-hdmi.jpg",
     stock: 50,
   },
 ]
