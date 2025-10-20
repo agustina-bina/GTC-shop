@@ -3,9 +3,21 @@ let currentPage = 1
 const itemsPerPage = 12
 let filteredProducts = []
 let products = []
+let cart = []
 
 // DOM Elements
 let searchInput, searchInputMobile, categoryFilter, sortOrder, productsGrid, resultsCount, noResults, pagination
+let cartBtn,
+  cartBtnMobile,
+  cartSidebar,
+  cartOverlay,
+  cartClose,
+  cartCount,
+  cartCountMobile,
+  cartEmpty,
+  cartItems,
+  cartFooter,
+  cartTotal
 
 // Initialize
 function init() {
@@ -30,13 +42,27 @@ function init() {
   noResults = document.getElementById("noResults")
   pagination = document.getElementById("pagination")
 
+  cartBtn = document.getElementById("cartBtn")
+  cartBtnMobile = document.getElementById("cartBtnMobile")
+  cartSidebar = document.getElementById("cartSidebar")
+  cartOverlay = document.getElementById("cartOverlay")
+  cartClose = document.getElementById("cartClose")
+  cartCount = document.getElementById("cartCount")
+  cartCountMobile = document.getElementById("cartCountMobile")
+  cartEmpty = document.getElementById("cartEmpty")
+  cartItems = document.getElementById("cartItems")
+  cartFooter = document.getElementById("cartFooter")
+  cartTotal = document.getElementById("cartTotal")
+
   console.log("[v0] DOM elements found:", {
     searchInput: !!searchInput,
     categoryFilter: !!categoryFilter,
     productsGrid: !!productsGrid,
+    cartBtn: !!cartBtn,
   })
 
   filteredProducts = [...products]
+  loadCart()
   renderProducts()
   setupEventListeners()
 
@@ -49,6 +75,11 @@ function setupEventListeners() {
   searchInputMobile.addEventListener("input", handleSearch)
   categoryFilter.addEventListener("change", handleFilter)
   sortOrder.addEventListener("change", handleSort)
+
+  cartBtn.addEventListener("click", openCart)
+  cartBtnMobile.addEventListener("click", openCart)
+  cartClose.addEventListener("click", closeCart)
+  cartOverlay.addEventListener("click", closeCart)
 }
 
 function handleSearch(e) {
@@ -204,10 +235,121 @@ function changePage(page) {
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
 
-// Add to Cart (placeholder function)
+function loadCart() {
+  const savedCart = localStorage.getItem("cart")
+  if (savedCart) {
+    cart = JSON.parse(savedCart)
+    updateCartUI()
+  }
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart))
+}
+
 function addToCart(productId) {
   const product = products.find((p) => p.id === productId)
-  alert(`Producto agregado al carrito: ${product.name}`)
+  if (!product) return
+
+  const existingItem = cart.find((item) => item.id === productId)
+
+  if (existingItem) {
+    existingItem.quantity += 1
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+    })
+  }
+
+  saveCart()
+  updateCartUI()
+  openCart()
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter((item) => item.id !== productId)
+  saveCart()
+  updateCartUI()
+}
+
+function updateQuantity(productId, change) {
+  const item = cart.find((item) => item.id === productId)
+  if (!item) return
+
+  item.quantity += change
+
+  if (item.quantity <= 0) {
+    removeFromCart(productId)
+  } else {
+    saveCart()
+    updateCartUI()
+  }
+}
+
+function updateCartUI() {
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+
+  // Update cart count badges
+  if (totalItems > 0) {
+    cartCount.textContent = totalItems
+    cartCount.style.display = "block"
+    cartCountMobile.textContent = totalItems
+    cartCountMobile.style.display = "block"
+  } else {
+    cartCount.style.display = "none"
+    cartCountMobile.style.display = "none"
+  }
+
+  // Update cart panel
+  if (cart.length === 0) {
+    cartEmpty.style.display = "flex"
+    cartItems.innerHTML = ""
+    cartFooter.style.display = "none"
+  } else {
+    cartEmpty.style.display = "none"
+    cartFooter.style.display = "block"
+    cartTotal.textContent = `$${totalPrice.toLocaleString()}`
+
+    cartItems.innerHTML = cart
+      .map(
+        (item) => `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80/1a1525/c026d3?text=Producto'">
+            <div class="cart-item-content">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">$${item.price.toLocaleString()}</div>
+              <div class="cart-item-quantity">
+                <button class="cart-item-qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                <span class="cart-item-qty-value">${item.quantity}</span>
+                <button class="cart-item-qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+              </div>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        `,
+      )
+      .join("")
+  }
+}
+
+function openCart() {
+  cartSidebar.classList.add("open")
+  document.body.style.overflow = "hidden"
+}
+
+function closeCart() {
+  cartSidebar.classList.remove("open")
+  document.body.style.overflow = ""
 }
 
 // Initialize on page load
