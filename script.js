@@ -153,7 +153,7 @@ function renderProducts() {
         (product) => `
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/400x400/1a1525/c026d3?text=Producto'">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
                     ${product.stock < 15 ? '<div class="product-badge">¡Últimas unidades!</div>' : ""}
                 </div>
                 <div class="product-content">

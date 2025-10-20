@@ -7,7 +7,7 @@ const productsData = [
     category: "Auriculares",
     price: 15999,
     description: "Auricular gamer plegable con sonido envolvente USB 7.1 para una experiencia inmersiva",
-    image: "productos para testing/H2230U.jpg",
+    image: "./images-productos/H2230U.webp/",
     stock: 20,
   },
   {
@@ -17,7 +17,7 @@ const productsData = [
     category: "Auriculares",
     price: 12999,
     description: "Auricular inalámbrico Bluetooth plegable con diseño elegante en color blanco",
-    image: "productos para testing/H628BT-BG.jpg",
+    image: "./images-productos/h628bt.webp",
     stock: 20,
   },
   {
@@ -27,7 +27,7 @@ const productsData = [
     category: "Auriculares",
     price: 12999,
     description: "Auricular inalámbrico Bluetooth plegable con diseño elegante en color negro",
-    image: "productos para testing/H628BT-BK.jpg",
+    image: "./images-productos/h628bt N.webp",
     stock: 20,
   },
   {
@@ -37,7 +37,7 @@ const productsData = [
     category: "Auriculares",
     price: 18999,
     description: "Auricular Bluetooth con cancelación activa de ruido y audio de alta resolución",
-    image: "productos para testing/H668BT.jpg",
+    image: "./images-productos/h668 enc n.webp",
     stock: 20,
   },
   {
@@ -47,7 +47,7 @@ const productsData = [
     category: "Auriculares",
     price: 18999,
     description: "Auricular Bluetooth con cancelación activa de ruido y audio de alta resolución en beige",
-    image: "productos para testing/H668BTB.jpg",
+    image: "./images-productos/h668 enc b.webp",
     stock: 20,
   },
   {
@@ -57,7 +57,7 @@ const productsData = [
     category: "Auriculares",
     price: 18999,
     description: "Auricular Bluetooth over-ear con cancelación activa de ruido en color púrpura",
-    image: "productos para testing/H668BT-P.jpg",
+    image: "./images-productos/h668 anc blanco.webp",
     stock: 20,
   },
   {
@@ -67,7 +67,7 @@ const productsData = [
     category: "Auriculares",
     price: 8999,
     description: "Auriculares True Wireless Stereo in-ear con estuche de carga en blanco",
-    image: "productos para testing/TW931B.jpg",
+    image: "./images-productos/tw931 b.webp",
     stock: 40,
   },
   {
@@ -77,7 +77,7 @@ const productsData = [
     category: "Auriculares",
     price: 8999,
     description: "Auriculares True Wireless Stereo in-ear con estuche de carga en negro",
-    image: "productos para testing/TW931N.jpg",
+    image: "./images-productos/TW931N.webp",
     stock: 40,
   },
   {
@@ -87,7 +87,7 @@ const productsData = [
     category: "Auriculares",
     price: 9999,
     description: "Auriculares True Wireless con tecnología avanzada y diseño ergonómico",
-    image: "productos para testing/TW969-BK.jpg",
+    image: "./images-productos/tw969.webp",
     stock: 40,
   },
   {
@@ -97,7 +97,7 @@ const productsData = [
     category: "Auriculares",
     price: 7999,
     description: "Versión lite de auriculares True Wireless con excelente relación calidad-precio",
-    image: "productos para testing/TW969-BK-LITE.jpg",
+    image: "./images-productos/TW969-BK LITE.webp",
     stock: 40,
   },
   {
@@ -107,7 +107,7 @@ const productsData = [
     category: "Auriculares",
     price: 11999,
     description: "Auricular gamer plegable con conexión jack 3.5mm en blanco y gris",
-    image: "productos para testing/H2230D-WG.jpg",
+    image: "./images-productos/h2230d b.webp",
     stock: 20,
   },
   {
@@ -117,7 +117,7 @@ const productsData = [
     category: "Auriculares",
     price: 11999,
     description: "Auricular gamer resistente con conexión jack 3.5mm en color negro",
-    image: "productos para testing/H2230D-BK.jpg",
+    image: "./images-productos/h2230d n.webp",
     stock: 20,
   },
 
@@ -129,7 +129,7 @@ const productsData = [
     category: "Teclados",
     price: 24999,
     description: "Teclado mecánico 96% con switches intercambiables en caliente, switches red",
-    image: "productos para testing/KB885L-SP.jpg",
+    image: "./images-productos/KB885L-SP.webp",
     stock: 10,
   },
   {
@@ -139,7 +139,7 @@ const productsData = [
     category: "Teclados",
     price: 25999,
     description: "Teclado mecánico 97% con switches intercambiables, diseño blanco y verde",
-    image: "productos para testing/KB899L.jpg",
+    image: "./images-productos/KB899L.webp",
     stock: 10,
   },
   {
@@ -149,7 +149,7 @@ const productsData = [
     category: "Teclados",
     price: 19999,
     description: "Teclado mecánico compacto 60% con carcasa transparente y switches blancos",
-    image: "productos para testing/KB903L-TWH.jpg",
+    image: "./images-productos/KB903L-TWH.webp",
     stock: 10,
   },
   {
@@ -159,7 +159,7 @@ const productsData = [
     category: "Teclados",
     price: 18999,
     description: "Teclado mecánico compacto 60% en elegante color blanco",
-    image: "productos para testing/KB903L-WH.jpg",
+    image: "./images-productos/KB903L-WH.webp",
     stock: 10,
   },
   {
@@ -169,7 +169,7 @@ const productsData = [
     category: "Teclados",
     price: 18999,
     description: "Teclado mecánico compacto 60% en clásico color negro",
-    image: "productos para testing/KB903L-BK.jpg",
+    image: "./images-productos/KB903L-BK.webp",
     stock: 10,
   },
 
@@ -181,7 +181,7 @@ const productsData = [
     category: "Mousepads",
     price: 4999,
     description: "Mousepad extra grande de superficie lisa, ideal para setup completo",
-    image: "productos para testing/MP830.jpg",
+    image: "./images-productos/MP830.webp",
     stock: 20,
   },
   {
@@ -191,7 +191,7 @@ const productsData = [
     category: "Mousepads",
     price: 3999,
     description: "Mousepad XL con diseño colorido sobre base negra",
-    image: "productos para testing/MP845.jpg",
+    image: "./images-productos/MP845.webp",
     stock: 20,
   },
   {
@@ -201,7 +201,7 @@ const productsData = [
     category: "Mousepads",
     price: 3999,
     description: "Mousepad gamer XL con superficie optimizada para gaming",
-    image: "productos para testing/MP860.jpg",
+    image: "./images-productos/MP860.webp",
     stock: 20,
   },
   {
@@ -211,7 +211,7 @@ const productsData = [
     category: "Mousepads",
     price: 3999,
     description: "Mousepad gamer XL con diseño alternativo y excelente deslizamiento",
-    image: "productos para testing/MP861.jpg",
+    image: "./images-productos/MP861.webp",
     stock: 20,
   },
 
@@ -223,7 +223,7 @@ const productsData = [
     category: "Mouses",
     price: 5999,
     description: "Mouse gamer con iluminación RGB y sensor de hasta 4800 DPI",
-    image: "productos para testing/MS1001S.jpg",
+    image: "./images-productos/MS1001S.webp",
     stock: 40,
   },
   {
@@ -233,7 +233,7 @@ const productsData = [
     category: "Mouses",
     price: 4999,
     description: "Mouse gamer con iluminación RGB y sensor de 3600 DPI",
-    image: "productos para testing/MS1010.jpg",
+    image: "./images-productos/MS1010.webp",
     stock: 60,
   },
   {
@@ -243,7 +243,7 @@ const productsData = [
     category: "Mouses",
     price: 8999,
     description: "Mouse gamer inalámbrico en elegante color blanco",
-    image: "productos para testing/MS1020WB.jpg",
+    image: "./images-productos/MS1020WB.webp",
     stock: 40,
   },
   {
@@ -253,7 +253,7 @@ const productsData = [
     category: "Mouses",
     price: 8999,
     description: "Mouse gamer inalámbrico en clásico color negro",
-    image: "productos para testing/MS1020N.jpg",
+    image: "./images-productos/MS1020N.webp",
     stock: 40,
   },
   {
@@ -263,7 +263,7 @@ const productsData = [
     category: "Mouses",
     price: 5499,
     description: "Mouse gaming con 6 botones programables, 3600 DPI y RGB",
-    image: "productos para testing/MS1027.jpg",
+    image: "./images-productos/MS1027.webp",
     stock: 60,
   },
   {
@@ -273,7 +273,7 @@ const productsData = [
     category: "Mouses",
     price: 6999,
     description: "Mouse gamer de alta precisión con sensor de 7200 DPI y RGB",
-    image: "productos para testing/MS1029.jpg",
+    image: "./images-productos/MS1029.webp",
     stock: 60,
   },
   {
@@ -283,7 +283,7 @@ const productsData = [
     category: "Mouses",
     price: 11999,
     description: "Mouse gamer inalámbrico premium con 7 botones y sensor de 10000 DPI",
-    image: "productos para testing/MS966WB.jpg",
+    image: "./images-productos/MS966WB.webp",
     stock: 40,
   },
   {
@@ -293,7 +293,7 @@ const productsData = [
     category: "Mouses",
     price: 9999,
     description: "Mouse gamer inalámbrico con diseño ergonómico y tecnología avanzada",
-    image: "productos para testing/MS969SE.jpg",
+    image: "./images-productos/MS969SE.webp",
     stock: 40,
   },
 
@@ -305,7 +305,7 @@ const productsData = [
     category: "Proyectores",
     price: 89999,
     description: "Proyector profesional de alta luminosidad con 8500 lúmenes y 450 ANSI",
-    image: "productos para testing/PJ209A-PRO-EU.jpg",
+    image: "./images-productos/PJ209A-PRO-EU.webp",
     stock: 6,
   },
   {
@@ -315,7 +315,7 @@ const productsData = [
     category: "Proyectores",
     price: 69999,
     description: "Proyector HD 720p con 7500 lúmenes y 180 ANSI en color blanco",
-    image: "productos para testing/PJ217.jpg",
+    image: "./images-productos/PJ217.webp",
     stock: 12,
   },
 
@@ -327,7 +327,7 @@ const productsData = [
     category: "Parlantes",
     price: 12999,
     description: "Barra de sonido Bluetooth con diseño elegante en negro y ocre",
-    image: "productos para testing/SK215.jpg",
+    image: "./images-productos/SK215.webp",
     stock: 20,
   },
   {
@@ -337,7 +337,7 @@ const productsData = [
     category: "Parlantes",
     price: 7999,
     description: "Parlantes gaming para escritorio con conexión USB 2.0 y potencia 2x5W",
-    image: "productos para testing/SK216.jpg",
+    image: "./images-productos/SK216.webp",
     stock: 20,
   },
   {
@@ -347,7 +347,7 @@ const productsData = [
     category: "Parlantes",
     price: 11999,
     description: "Barra de sonido con Bluetooth 5.3 y potencia 2x5W",
-    image: "productos para testing/SK770BT.jpg",
+    image: "./images-productos/SK770BT.webp",
     stock: 12,
   },
   {
@@ -357,7 +357,7 @@ const productsData = [
     category: "Parlantes",
     price: 5999,
     description: "Parlante portátil Bluetooth con ranura TF y jack 3.5mm en azul",
-    image: "productos para testing/SK801A.jpg",
+    image: "./images-productos/SK801A.webp",
     stock: 40,
   },
   {
@@ -367,7 +367,7 @@ const productsData = [
     category: "Parlantes",
     price: 5999,
     description: "Parlante portátil Bluetooth con ranura TF y jack 3.5mm en negro",
-    image: "productos para testing/SK801N.jpg",
+    image: "./images-productos/SK801N.webp",
     stock: 40,
   },
   {
@@ -377,7 +377,7 @@ const productsData = [
     category: "Parlantes",
     price: 6999,
     description: "Parlante Bluetooth multifunción con USB, AUX, SD y radio FM",
-    image: "productos para testing/SK809BT.jpg",
+    image: "./images-productos/SK809BT.webp",
     stock: 40,
   },
   {
@@ -387,7 +387,7 @@ const productsData = [
     category: "Parlantes",
     price: 7999,
     description: "Parlante Bluetooth con múltiples opciones de conectividad",
-    image: "productos para testing/SK874BT.jpg",
+    image: "./images-productos/SK874BT.webp",
     stock: 40,
   },
   {
@@ -397,7 +397,7 @@ const productsData = [
     category: "Parlantes",
     price: 8999,
     description: "Parlante Bluetooth colgante con AUX y ranura SD",
-    image: "productos para testing/SK903BT.jpg",
+    image: "./images-productos/SK903BT.webp",
     stock: 6,
   },
 
@@ -409,7 +409,7 @@ const productsData = [
     category: "Accesorios",
     price: 9999,
     description: "Webcam Full HD 1080p con sensor de 2 megapíxeles y conexión USB 2.0",
-    image: "productos para testing/HN11P.jpg",
+    image: "./images-productos/HN11P.webp",
     stock: 40,
   },
   {
@@ -419,7 +419,7 @@ const productsData = [
     category: "Accesorios",
     price: 14999,
     description: "Aro de luz LED profesional con trípode incluido para streaming y fotografía",
-    image: "productos para testing/ST7012PRO.jpg",
+    image: "./images-productos/ST7012PRO.webp",
     stock: 15,
   },
   {
@@ -429,7 +429,7 @@ const productsData = [
     category: "Accesorios",
     price: 19999,
     description: "Masajeador de ojos inteligente para aliviar la fatiga visual",
-    image: "productos para testing/EM1601.jpg",
+    image: "./images-productos/EM1601.webp",
     stock: 12,
   },
   {
@@ -439,7 +439,7 @@ const productsData = [
     category: "Accesorios",
     price: 16999,
     description: "Cooler para CPU con refrigeración por aire e iluminación RGB",
-    image: "productos para testing/F2005.jpg",
+    image: "./images-productos/F2005.webp",
     stock: 20,
   },
   {
@@ -449,7 +449,7 @@ const productsData = [
     category: "Accesorios",
     price: 8999,
     description: "Base refrigeradora para notebook de hasta 15.6 pulgadas con 2 coolers",
-    image: "productos para testing/HV-F2035.jpg",
+    image: "./images-productos/HV-F2035.webp",
     stock: 20,
   },
   {
@@ -459,7 +459,7 @@ const productsData = [
     category: "Accesorios",
     price: 4999,
     description: "Ventilador RGB para gabinete con iluminación personalizable",
-    image: "productos para testing/F2095.jpg",
+    image: "./images-productos/F2095.webp",
     stock: 40,
   },
   {
@@ -469,7 +469,7 @@ const productsData = [
     category: "Accesorios",
     price: 13999,
     description: "Joystick Bluetooth con soporte integrado para celular, ideal para gaming móvil",
-    image: "productos para testing/G158BT-Pro.jpg",
+    image: "./images-productos/G158BT-Pro.webp",
     stock: 20,
   },
   {
@@ -479,7 +479,7 @@ const productsData = [
     category: "Accesorios",
     price: 18999,
     description: "Micrófono gaming profesional con excelente calidad de audio",
-    image: "productos para testing/GK50-Pro.jpg",
+    image: "./images-productos/GK50-Pro.webp",
     stock: 10,
   },
   {
@@ -489,7 +489,7 @@ const productsData = [
     category: "Accesorios",
     price: 16999,
     description: "Micrófono gaming con diseño compacto y gran calidad de sonido",
-    image: "productos para testing/GK61.jpg",
+    image: "./images-productos/GK61.webp",
     stock: 20,
   },
   {
@@ -499,7 +499,7 @@ const productsData = [
     category: "Accesorios",
     price: 2999,
     description: "Aire comprimido para limpieza de equipos electrónicos y periféricos",
-    image: "productos para testing/ADG-001.jpg",
+    image: "./images-productos/ADG-001.webp",
     stock: 24,
   },
   {
@@ -509,7 +509,7 @@ const productsData = [
     category: "Accesorios",
     price: 3499,
     description: "Cable HDMI 2.0 de alta velocidad, soporta 4K a 60Hz",
-    image: "productos para testing/CABLE-HDMI.jpg",
+    image: "./images-productos/CABLE-HDMI.webp",
     stock: 50,
   },
 ]
