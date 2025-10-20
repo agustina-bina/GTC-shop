@@ -194,9 +194,7 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qqBOByubgCveneSjlYph65LLCNNQ1X.png");
-  background-size: cover;
-  background-position: center;
+  background: url(images-productos/fondopag.jpg) no-repeat center center/cover;
   opacity: 0.4;
 }
 
