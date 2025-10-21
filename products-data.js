@@ -38,7 +38,7 @@ const productsData = [
     category: "Auriculares",
     price: 18999,
     description: "Auricular Bluetooth con cancelación activa de ruido y audio de alta resolución",
-    image: "./images-productos/h668 enc n.webp",
+    image: "./images-productos/h668encn.webp",
     stock: 20,
   },
   {
@@ -48,7 +48,7 @@ const productsData = [
     category: "Auriculares",
     price: 18999,
     description: "Auricular Bluetooth con cancelación activa de ruido y audio de alta resolución en beige",
-    image: "./images-productos/h668 enc b.webp",
+    image: "./images-productos/h668encb.webp",
     stock: 20,
   },
   {
