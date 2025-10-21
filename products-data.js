@@ -20,6 +20,7 @@ const productsData = [
     image: "./images-productos/h628bt.webp",
     stock: 20,
   },
+
   {
     id: 3,
     sku: "H628BT-BK",
@@ -27,7 +28,7 @@ const productsData = [
     category: "Auriculares",
     price: 12999,
     description: "Auricular inalámbrico Bluetooth plegable con diseño elegante en color negro",
-    image: "./images-productos/h628bt N.webp",
+    image: "./images-productos/h628btN.webp",
     stock: 20,
   },
   {
@@ -57,7 +58,7 @@ const productsData = [
     category: "Auriculares",
     price: 18999,
     description: "Auricular Bluetooth over-ear con cancelación activa de ruido en color púrpura",
-    image: "./images-productos/h668 anc blanco.webp",
+    image: "./images-productos/h668ancblanco.webp",
     stock: 20,
   },
   {
@@ -67,7 +68,7 @@ const productsData = [
     category: "Auriculares",
     price: 8999,
     description: "Auriculares True Wireless Stereo in-ear con estuche de carga en blanco",
-    image: "./images-productos/tw931 b.webp",
+    image: "./images-productos/tw931b.webp",
     stock: 40,
   },
   {
@@ -97,7 +98,7 @@ const productsData = [
     category: "Auriculares",
     price: 7999,
     description: "Versión lite de auriculares True Wireless con excelente relación calidad-precio",
-    image: "./images-productos/TW969-BK LITE.webp",
+    image: "./images-productos/TW969-BKLITE.webp",
     stock: 40,
   },
   {
@@ -107,7 +108,7 @@ const productsData = [
     category: "Auriculares",
     price: 11999,
     description: "Auricular gamer plegable con conexión jack 3.5mm en blanco y gris",
-    image: "./images-productos/h2230d b.webp",
+    image: "./images-productos/h2230db.webp",
     stock: 20,
   },
   {
@@ -117,7 +118,7 @@ const productsData = [
     category: "Auriculares",
     price: 11999,
     description: "Auricular gamer resistente con conexión jack 3.5mm en color negro",
-    image: "./images-productos/h2230d n.webp",
+    image: "./images-productos/h2230dn.webp",
     stock: 20,
   },
 
@@ -149,7 +150,7 @@ const productsData = [
     category: "Teclados",
     price: 19999,
     description: "Teclado mecánico compacto 60% con carcasa transparente y switches blancos",
-    image: "./images-productos/KB903L-TWH .webp",
+    image: "./images-productos/KB903L-TWH.webp",
     stock: 10,
   },
   {
@@ -159,7 +160,7 @@ const productsData = [
     category: "Teclados",
     price: 18999,
     description: "Teclado mecánico compacto 60% en elegante color blanco",
-    image: "./images-productos/KB903L-TWH .webp",
+    image: "./images-productos/kb903lbl.webp",
     stock: 10,
   },
   {
@@ -243,7 +244,7 @@ const productsData = [
     category: "Mouses",
     price: 8999,
     description: "Mouse gamer inalámbrico en elegante color blanco",
-    image: "./images-productos/ms1020 bl.webp",
+    image: "./images-productos/ms1020bl.webp",
     stock: 40,
   },
   {
@@ -253,7 +254,7 @@ const productsData = [
     category: "Mouses",
     price: 8999,
     description: "Mouse gamer inalámbrico en clásico color negro",
-    image: "./images-productos/ms1020 ne.webp",
+    image: "./images-productos/ms1020ne.webp",
     stock: 40,
   },
   {
@@ -305,7 +306,7 @@ const productsData = [
     category: "Proyectores",
     price: 89999,
     description: "Proyector profesional de alta luminosidad con 8500 lúmenes y 450 ANSI",
-    image: "./images-productos/pj209 a.webp",
+    image: "./images-productos/pj209a.webp",
     stock: 6,
   },
   {
@@ -357,7 +358,7 @@ const productsData = [
     category: "Parlantes",
     price: 5999,
     description: "Parlante portátil Bluetooth con ranura TF y jack 3.5mm en azul",
-    image: "./images-productos/sk801bt a.webp",
+    image: "./images-productos/sk801bta.webp",
     stock: 40,
   },
   {
@@ -367,7 +368,7 @@ const productsData = [
     category: "Parlantes",
     price: 5999,
     description: "Parlante portátil Bluetooth con ranura TF y jack 3.5mm en negro",
-    image: "./images-productos/sk801bt n.webp",
+    image: "./images-productos/sk801btn.webp",
     stock: 40,
   },
   {
