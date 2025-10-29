@@ -352,5 +352,6 @@ function closeCart() {
   document.body.style.overflow = ""
 }
 
+
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", init)

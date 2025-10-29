@@ -697,6 +697,8 @@ body {
   background-color: var(--primary-hover);
 }
 
+
+
 @media (max-width: 767px) {
   .desktop-only {
     display: none;
@@ -714,3 +716,5 @@ body {
     padding: 4rem 1rem;
   }
 }
+
+
