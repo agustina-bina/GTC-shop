@@ -18,6 +18,21 @@ let cartBtn,
   cartItems,
   cartFooter,
   cartTotal
+let accountBtn,
+  accountBtnMobile,
+  authSidebar,
+  authOverlay,
+  authClose,
+  authTitle,
+  loginForm,
+  registerForm,
+  switchToRegister,
+  switchToLogin,
+  loginPasswordToggle,
+  registerPasswordToggle,
+  registerPasswordConfirmToggle
+let productDetailsSidebar, productDetailsOverlay, productDetailsClose, productDetailsContent
+let helpBtn, helpSidebar, helpOverlay, helpClose, helpForm
 
 // Initialize
 function init() {
@@ -54,11 +69,39 @@ function init() {
   cartFooter = document.getElementById("cartFooter")
   cartTotal = document.getElementById("cartTotal")
 
+  accountBtn = document.getElementById("accountBtn")
+  accountBtnMobile = document.getElementById("accountBtnMobile")
+  authSidebar = document.getElementById("authSidebar")
+  authOverlay = document.getElementById("authOverlay")
+  authClose = document.getElementById("authClose")
+  authTitle = document.getElementById("authTitle")
+  loginForm = document.getElementById("loginForm")
+  registerForm = document.getElementById("registerForm")
+  switchToRegister = document.getElementById("switchToRegister")
+  switchToLogin = document.getElementById("switchToLogin")
+  loginPasswordToggle = document.getElementById("loginPasswordToggle")
+  registerPasswordToggle = document.getElementById("registerPasswordToggle")
+  registerPasswordConfirmToggle = document.getElementById("registerPasswordConfirmToggle")
+
+  productDetailsSidebar = document.getElementById("productDetailsSidebar")
+  productDetailsOverlay = document.getElementById("productDetailsOverlay")
+  productDetailsClose = document.getElementById("productDetailsClose")
+  productDetailsContent = document.getElementById("productDetailsContent")
+
+  helpBtn = document.getElementById("helpBtn")
+  helpSidebar = document.getElementById("helpSidebar")
+  helpOverlay = document.getElementById("helpOverlay")
+  helpClose = document.getElementById("helpClose")
+  helpForm = document.getElementById("helpForm")
+
   console.log("[v0] DOM elements found:", {
     searchInput: !!searchInput,
     categoryFilter: !!categoryFilter,
     productsGrid: !!productsGrid,
     cartBtn: !!cartBtn,
+    accountBtn: !!accountBtn,
+    productDetailsSidebar: !!productDetailsSidebar,
+    helpBtn: !!helpBtn,
   })
 
   filteredProducts = [...products]
@@ -80,6 +123,26 @@ function setupEventListeners() {
   cartBtnMobile.addEventListener("click", openCart)
   cartClose.addEventListener("click", closeCart)
   cartOverlay.addEventListener("click", closeCart)
+
+  accountBtn.addEventListener("click", openAuth)
+  accountBtnMobile.addEventListener("click", openAuth)
+  authClose.addEventListener("click", closeAuth)
+  authOverlay.addEventListener("click", closeAuth)
+  switchToRegister.addEventListener("click", showRegisterForm)
+  switchToLogin.addEventListener("click", showLoginForm)
+  loginPasswordToggle.addEventListener("click", () => togglePassword("loginPassword"))
+  registerPasswordToggle.addEventListener("click", () => togglePassword("registerPassword"))
+  registerPasswordConfirmToggle.addEventListener("click", () => togglePassword("registerPasswordConfirm"))
+  loginForm.addEventListener("submit", handleLogin)
+  registerForm.addEventListener("submit", handleRegister)
+
+  productDetailsClose.addEventListener("click", closeProductDetails)
+  productDetailsOverlay.addEventListener("click", closeProductDetails)
+
+  helpBtn.addEventListener("click", openHelp)
+  helpClose.addEventListener("click", closeHelp)
+  helpOverlay.addEventListener("click", closeHelp)
+  helpForm.addEventListener("submit", handleHelpSubmit)
 }
 
 function handleSearch(e) {
@@ -111,9 +174,11 @@ function filterProducts() {
   const category = categoryFilter.value
   const sort = sortOrder.value
 
-  // Filter
   filteredProducts = products.filter((product) => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm)
+    const matchesSearch =
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.description.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm)
     const matchesCategory = category === "all" || product.category === category
     return matchesSearch && matchesCategory
   })
@@ -147,13 +212,12 @@ function renderProducts() {
     productsGrid.style.display = "grid"
     pagination.style.display = "flex"
 
-    // Render product cards
     productsGrid.innerHTML = paginatedProducts
       .map(
         (product) => `
-            <div class="product-card">
+            <div class="product-card" onclick="openProductDetails(${product.id})" style="cursor: pointer;">
                 <div class="product-image-container">
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/400x400/1a1525/c026d3?text=Producto'">
                     ${product.stock < 15 ? '<div class="product-badge">¡Últimas unidades!</div>' : ""}
                 </div>
                 <div class="product-content">
@@ -163,7 +227,7 @@ function renderProducts() {
                 </div>
                 <div class="product-footer">
                     <div class="product-price">$${product.price.toLocaleString()}</div>
-                    <button class="product-btn" onclick="addToCart(${product.id})">Agregar</button>
+                    <button class="product-btn" onclick="event.stopPropagation(); addToCart(${product.id})">Agregar</button>
                 </div>
             </div>
         `,
@@ -352,6 +416,145 @@ function closeCart() {
   document.body.style.overflow = ""
 }
 
+function openAuth() {
+  authSidebar.classList.add("open")
+  document.body.style.overflow = "hidden"
+}
+
+function closeAuth() {
+  authSidebar.classList.remove("open")
+  document.body.style.overflow = ""
+}
+
+function showRegisterForm() {
+  loginForm.style.display = "none"
+  registerForm.style.display = "flex"
+  authTitle.textContent = "Crear Cuenta"
+}
+
+function showLoginForm() {
+  registerForm.style.display = "none"
+  loginForm.style.display = "flex"
+  authTitle.textContent = "Iniciar Sesión"
+}
+
+function togglePassword(inputId) {
+  const input = document.getElementById(inputId)
+  if (input.type === "password") {
+    input.type = "text"
+  } else {
+    input.type = "password"
+  }
+}
+
+function handleLogin(e) {
+  e.preventDefault()
+  const email = document.getElementById("loginEmail").value
+  const password = document.getElementById("loginPassword").value
+
+  // Aquí iría la lógica de autenticación real
+  console.log("Login:", { email, password })
+  alert("Inicio de sesión exitoso!")
+  closeAuth()
+  loginForm.reset()
+}
+
+function handleRegister(e) {
+  e.preventDefault()
+  const name = document.getElementById("registerName").value
+  const email = document.getElementById("registerEmail").value
+  const password = document.getElementById("registerPassword").value
+  const passwordConfirm = document.getElementById("registerPasswordConfirm").value
+
+  if (password !== passwordConfirm) {
+    alert("Las contraseñas no coinciden")
+    return
+  }
+
+  // Aquí iría la lógica de registro real
+  console.log("Register:", { name, email, password })
+  alert("Cuenta creada exitosamente!")
+  closeAuth()
+  registerForm.reset()
+  showLoginForm()
+}
+
+function openProductDetails(productId) {
+  const product = products.find((p) => p.id === productId)
+  if (!product) return
+
+  productDetailsContent.innerHTML = `
+    <img src="${product.image}" alt="${product.name}" class="product-details-image" onerror="this.src='https://via.placeholder.com/600x600/1a1525/c026d3?text=Producto'">
+    <div class="product-details-info">
+      <span class="product-details-category">${product.category}</span>
+      <h2 class="product-details-title">${product.name}</h2>
+      <p class="product-details-description">${product.description}</p>
+      
+      <div class="product-details-meta">
+        <div class="product-details-meta-item">
+          <span class="product-details-meta-label">SKU:</span>
+          <span class="product-details-meta-value">${product.sku}</span>
+        </div>
+        <div class="product-details-meta-item">
+          <span class="product-details-meta-label">Categoría:</span>
+          <span class="product-details-meta-value">${product.category}</span>
+        </div>
+        <div class="product-details-meta-item">
+          <span class="product-details-meta-label">Stock disponible:</span>
+          <span class="product-details-meta-value">${product.stock} unidades</span>
+        </div>
+      </div>
+
+      <div class="product-details-price">$${product.price.toLocaleString()}</div>
+      
+      <div class="product-details-stock ${product.stock < 15 ? "low" : ""}">
+        <span class="product-details-stock-indicator"></span>
+        <span>${product.stock < 15 ? "¡Últimas unidades disponibles!" : "En stock"}</span>
+      </div>
+
+      <button class="product-details-add-btn" onclick="addToCart(${product.id}); closeProductDetails();">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        Agregar al carrito
+      </button>
+    </div>
+  `
+
+  productDetailsSidebar.classList.add("open")
+  document.body.style.overflow = "hidden"
+}
+
+function closeProductDetails() {
+  productDetailsSidebar.classList.remove("open")
+  document.body.style.overflow = ""
+}
+
+function openHelp() {
+  helpSidebar.classList.add("open")
+  document.body.style.overflow = "hidden"
+}
+
+function closeHelp() {
+  helpSidebar.classList.remove("open")
+  document.body.style.overflow = ""
+}
+
+function handleHelpSubmit(e) {
+  e.preventDefault()
+  const firstName = document.getElementById("helpFirstName").value
+  const lastName = document.getElementById("helpLastName").value
+  const email = document.getElementById("helpEmail").value
+  const message = document.getElementById("helpMessage").value
+
+  // Aquí iría la lógica para enviar la consulta al servidor
+  console.log("Help request:", { firstName, lastName, email, message })
+  alert("¡Gracias por tu consulta! Te responderemos a la brevedad.")
+  closeHelp()
+  helpForm.reset()
+}
 
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", init)

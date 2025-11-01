@@ -33,7 +33,8 @@
 
                 <!-- Right Icons -->
                 <div class="header-actions">
-                    <button class="header-btn desktop-only">
+                    <!-- Added click handler to help button -->
+                    <button class="header-btn desktop-only" id="helpBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
@@ -49,7 +50,8 @@
                         <span>Mi carrito</span>
                         <span id="cartCount" class="cart-count" style="display: none;">0</span>
                     </button>
-                    <button class="header-btn desktop-only">
+                    <!-- Added click handler to account button -->
+                    <button class="header-btn desktop-only" id="accountBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
@@ -65,7 +67,8 @@
                         </svg>
                         <span id="cartCountMobile" class="cart-count" style="display: none;">0</span>
                     </button>
-                    <button class="header-btn-icon mobile-only">
+                    <!-- Added click handler to mobile account button -->
+                    <button class="header-btn-icon mobile-only" id="accountBtnMobile">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
@@ -89,8 +92,7 @@
             </div>
         </div>
 
-        <!-- Navigation -->
-        
+        <!-- Removed navigation bar with INICIO, PRODUCTOS, CONTACTO links -->
     </header>
 
     <!-- Hero Section -->
@@ -146,7 +148,141 @@
         </div>
     </main>
 
-    <!-- Added cart sidebar panel -->
+    <!-- Added login/register sidebar panel -->
+    <div id="authSidebar" class="cart-sidebar">
+        <div class="cart-overlay" id="authOverlay"></div>
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2 class="cart-title" id="authTitle">Iniciar Sesión</h2>
+                <button class="cart-close" id="authClose">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="auth-content">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            id="loginEmail" 
+                            class="form-input" 
+                            placeholder="tu@email.com"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Contraseña</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="loginPassword" 
+                                class="form-input" 
+                                placeholder="••••••••"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="loginPasswordToggle">
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn">Iniciar Sesión</button>
+
+                    <div class="auth-divider">
+                        <span>¿Todavía no tenés una cuenta?</span>
+                    </div>
+
+                    <button type="button" class="auth-switch-btn" id="switchToRegister">
+                        Crear cuenta
+                    </button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="registerName" class="form-label">Nombre completo</label>
+                        <input 
+                            type="text" 
+                            id="registerName" 
+                            class="form-input" 
+                            placeholder="Tu nombre"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerEmail" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            id="registerEmail" 
+                            class="form-input" 
+                            placeholder="tu@email.com"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword" class="form-label">Contraseña</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="registerPassword" 
+                                class="form-input" 
+                                placeholder="••••••••"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="registerPasswordToggle">
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPasswordConfirm" class="form-label">Confirmar contraseña</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="registerPasswordConfirm" 
+                                class="form-input" 
+                                placeholder="••••••••"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="registerPasswordConfirmToggle">
+                                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn">Crear cuenta</button>
+
+                    <div class="auth-divider">
+                        <span>¿Ya tenés una cuenta?</span>
+                    </div>
+
+                    <button type="button" class="auth-switch-btn" id="switchToLogin">
+                        Iniciar sesión
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
     <div id="cartSidebar" class="cart-sidebar">
         <div class="cart-overlay" id="cartOverlay"></div>
         <div class="cart-panel">
@@ -177,6 +313,90 @@
                     <span id="cartTotal" class="cart-total-amount">$0</span>
                 </div>
                 <button class="cart-checkout-btn">Proceder al pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Added product details panel -->
+    <div id="productDetailsSidebar" class="cart-sidebar">
+        <div class="cart-overlay" id="productDetailsOverlay"></div>
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2 class="cart-title">Detalles del Producto</h2>
+                <button class="cart-close" id="productDetailsClose">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="productDetailsContent" class="product-details-content"></div>
+        </div>
+    </div>
+
+    <!-- Added help panel -->
+    <div id="helpSidebar" class="cart-sidebar">
+        <div class="cart-overlay" id="helpOverlay"></div>
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2 class="cart-title">Centro de Ayuda</h2>
+                <button class="cart-close" id="helpClose">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="auth-content">
+                <form id="helpForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="helpFirstName" class="form-label">Nombre</label>
+                        <input 
+                            type="text" 
+                            id="helpFirstName" 
+                            class="form-input" 
+                            placeholder="Tu nombre"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="helpLastName" class="form-label">Apellido</label>
+                        <input 
+                            type="text" 
+                            id="helpLastName" 
+                            class="form-input" 
+                            placeholder="Tu apellido"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="helpEmail" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            id="helpEmail" 
+                            class="form-input" 
+                            placeholder="tu@email.com"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="helpMessage" class="form-label">¿En qué podemos ayudarte?</label>
+                        <textarea 
+                            id="helpMessage" 
+                            class="form-textarea" 
+                            placeholder="Describe tu consulta o problema..."
+                            rows="6"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn">Enviar consulta</button>
+                </form>
             </div>
         </div>
     </div>
