@@ -4,6 +4,7 @@ const itemsPerPage = 12
 let filteredProducts = []
 let products = []
 let cart = []
+let currentUser = null
 
 // DOM Elements
 let searchInput, searchInputMobile, categoryFilter, sortOrder, productsGrid, resultsCount, noResults, pagination
@@ -106,6 +107,7 @@ function init() {
 
   filteredProducts = [...products]
   loadCart()
+  loadCurrentUser()
   renderProducts()
   setupEventListeners()
 
@@ -143,6 +145,11 @@ function setupEventListeners() {
   helpClose.addEventListener("click", closeHelp)
   helpOverlay.addEventListener("click", closeHelp)
   helpForm.addEventListener("submit", handleHelpSubmit)
+
+  const forgotPasswordBtn = document.getElementById("forgotPasswordBtn")
+  if (forgotPasswordBtn) {
+    forgotPasswordBtn.addEventListener("click", handleForgotPassword)
+  }
 }
 
 function handleSearch(e) {
@@ -447,36 +454,359 @@ function togglePassword(inputId) {
   }
 }
 
+function loadCurrentUser() {
+  const savedUser = localStorage.getItem("currentUser")
+  if (savedUser) {
+    currentUser = JSON.parse(savedUser)
+    updateAuthUI()
+  }
+}
+
+function saveCurrentUser(user) {
+  currentUser = user
+  localStorage.setItem("currentUser", JSON.stringify(user))
+  updateAuthUI()
+}
+
+function clearCurrentUser() {
+  currentUser = null
+  localStorage.removeItem("currentUser")
+  updateAuthUI()
+}
+
+function updateAuthUI() {
+  const authContent = document.querySelector(".auth-content")
+
+  if (currentUser) {
+    authContent.innerHTML = `
+      <div class="user-info">
+        <div class="user-avatar">${currentUser.name.charAt(0).toUpperCase()}</div>
+        <div>
+          <div class="user-name">${currentUser.name}</div>
+          <div class="user-email">${currentUser.email}</div>
+        </div>
+        <button class="logout-btn" onclick="handleLogout()">Cerrar Sesión</button>
+      </div>
+    `
+  } else {
+    authContent.innerHTML = `
+      <form id="loginForm" class="auth-form">
+        <div id="loginError" class="auth-error" style="display: none;"></div>
+        
+        <div class="form-group">
+          <label for="loginEmail" class="form-label">Email</label>
+          <input 
+            type="email" 
+            id="loginEmail" 
+            class="form-input" 
+            placeholder="tu@email.com"
+            required
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="loginPassword" class="form-label">Contraseña</label>
+          <div class="password-input-wrapper">
+            <input 
+              type="password" 
+              id="loginPassword" 
+              class="form-input" 
+              placeholder="••••••••"
+              required
+            >
+            <button type="button" class="password-toggle" id="loginPasswordToggle">
+              <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="auth-submit-btn">Iniciar Sesión</button>
+
+        <button type="button" class="auth-forgot-btn" id="forgotPasswordBtn">
+          ¿Olvidaste tu contraseña?
+        </button>
+
+        <div class="auth-divider">
+          <span>¿Todavía no tenés una cuenta?</span>
+        </div>
+
+        <button type="button" class="auth-switch-btn" id="switchToRegister">
+          Crear cuenta
+        </button>
+      </form>
+
+      <form id="registerForm" class="auth-form" style="display: none;">
+        <div id="registerError" class="auth-error" style="display: none;"></div>
+        
+        <div class="form-group">
+          <label for="registerName" class="form-label">Nombre completo</label>
+          <input 
+            type="text" 
+            id="registerName" 
+            class="form-input" 
+            placeholder="Tu nombre"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="registerEmail" class="form-label">Email</label>
+          <input 
+            type="email" 
+            id="registerEmail" 
+            class="form-input" 
+            placeholder="tu@email.com"
+            required
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="registerPassword" class="form-label">Contraseña</label>
+          <div class="password-input-wrapper">
+            <input 
+              type="password" 
+              id="registerPassword" 
+              class="form-input" 
+              placeholder="••••••••"
+              required
+            >
+            <button type="button" class="password-toggle" id="registerPasswordToggle">
+              <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="registerPasswordConfirm" class="form-label">Confirmar contraseña</label>
+          <div class="password-input-wrapper">
+            <input 
+              type="password" 
+              id="registerPasswordConfirm" 
+              class="form-input" 
+              placeholder="••••••••"
+              required
+            >
+            <button type="button" class="password-toggle" id="registerPasswordConfirmToggle">
+              <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="auth-submit-btn">Crear cuenta</button>
+
+        <div class="auth-divider">
+          <span>¿Ya tenés una cuenta?</span>
+        </div>
+
+        <button type="button" class="auth-switch-btn" id="switchToLogin">
+          Iniciar sesión
+        </button>
+      </form>
+    `
+
+    const newLoginForm = document.getElementById("loginForm")
+    const newRegisterForm = document.getElementById("registerForm")
+    const newSwitchToRegister = document.getElementById("switchToRegister")
+    const newSwitchToLogin = document.getElementById("switchToLogin")
+    const newLoginPasswordToggle = document.getElementById("loginPasswordToggle")
+    const newRegisterPasswordToggle = document.getElementById("registerPasswordToggle")
+    const newRegisterPasswordConfirmToggle = document.getElementById("registerPasswordConfirmToggle")
+    const newForgotPasswordBtn = document.getElementById("forgotPasswordBtn")
+
+    if (newLoginForm) newLoginForm.addEventListener("submit", handleLogin)
+    if (newRegisterForm) newRegisterForm.addEventListener("submit", handleRegister)
+    if (newSwitchToRegister) newSwitchToRegister.addEventListener("click", showRegisterForm)
+    if (newSwitchToLogin) newSwitchToLogin.addEventListener("click", showLoginForm)
+    if (newLoginPasswordToggle) newLoginPasswordToggle.addEventListener("click", () => togglePassword("loginPassword"))
+    if (newRegisterPasswordToggle)
+      newRegisterPasswordToggle.addEventListener("click", () => togglePassword("registerPassword"))
+    if (newRegisterPasswordConfirmToggle)
+      newRegisterPasswordConfirmToggle.addEventListener("click", () => togglePassword("registerPasswordConfirm"))
+    if (newForgotPasswordBtn) newForgotPasswordBtn.addEventListener("click", handleForgotPassword)
+  }
+}
+
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
+function getAllUsers() {
+  const users = localStorage.getItem("users")
+  return users ? JSON.parse(users) : []
+}
+
+function saveAllUsers(users) {
+  localStorage.setItem("users", JSON.stringify(users))
+}
+
 function handleLogin(e) {
   e.preventDefault()
-  const email = document.getElementById("loginEmail").value
+
+  const loginError = document.getElementById("loginError")
+  const email = document.getElementById("loginEmail").value.trim()
   const password = document.getElementById("loginPassword").value
 
-  // Aquí iría la lógica de autenticación real
-  console.log("Login:", { email, password })
-  alert("Inicio de sesión exitoso!")
+  // Clear previous errors
+  loginError.style.display = "none"
+  loginError.textContent = ""
+
+  // Validate empty fields
+  if (!email || !password) {
+    loginError.textContent = "Por favor, completa todos los campos"
+    loginError.style.display = "block"
+    return
+  }
+
+  // Validate email format
+  if (!isValidEmail(email)) {
+    loginError.textContent = "Por favor, ingresa un email válido"
+    loginError.style.display = "block"
+    return
+  }
+
+  // Get all users
+  const users = getAllUsers()
+
+  // Find user by email
+  const user = users.find((u) => u.email === email)
+
+  // Check if user exists
+  if (!user) {
+    loginError.textContent = "Usuario no existente. Por favor, crea una cuenta primero"
+    loginError.style.display = "block"
+    return
+  }
+
+  // Check if password is correct
+  if (user.password !== password) {
+    loginError.textContent = "Contraseña incorrecta. Por favor, intenta nuevamente"
+    loginError.style.display = "block"
+    return
+  }
+
+  // Login successful
+  saveCurrentUser({ name: user.name, email: user.email })
   closeAuth()
-  loginForm.reset()
+
+  // Show success message
+  alert("¡Bienvenido de vuelta, " + user.name + "!")
 }
 
 function handleRegister(e) {
   e.preventDefault()
-  const name = document.getElementById("registerName").value
-  const email = document.getElementById("registerEmail").value
+
+  const registerError = document.getElementById("registerError")
+  const name = document.getElementById("registerName").value.trim()
+  const email = document.getElementById("registerEmail").value.trim()
   const password = document.getElementById("registerPassword").value
   const passwordConfirm = document.getElementById("registerPasswordConfirm").value
 
-  if (password !== passwordConfirm) {
-    alert("Las contraseñas no coinciden")
+  // Clear previous errors
+  registerError.style.display = "none"
+  registerError.textContent = ""
+
+  // Validate empty fields
+  if (!name || !email || !password || !passwordConfirm) {
+    registerError.textContent = "Por favor, completa todos los campos"
+    registerError.style.display = "block"
     return
   }
 
-  // Aquí iría la lógica de registro real
-  console.log("Register:", { name, email, password })
-  alert("Cuenta creada exitosamente!")
+  // Validate email format
+  if (!isValidEmail(email)) {
+    registerError.textContent = "Por favor, ingresa un email válido"
+    registerError.style.display = "block"
+    return
+  }
+
+  // Validate password match
+  if (password !== passwordConfirm) {
+    registerError.textContent = "Las contraseñas no coinciden"
+    registerError.style.display = "block"
+    return
+  }
+
+  // Validate password length
+  if (password.length < 6) {
+    registerError.textContent = "La contraseña debe tener al menos 6 caracteres"
+    registerError.style.display = "block"
+    return
+  }
+
+  // Get all users
+  const users = getAllUsers()
+
+  // Check if user already exists
+  const existingUser = users.find((u) => u.email === email)
+  if (existingUser) {
+    registerError.textContent = "Este email ya está registrado. Por favor, inicia sesión"
+    registerError.style.display = "block"
+    return
+  }
+
+  // Create new user
+  const newUser = {
+    name,
+    email,
+    password,
+    createdAt: new Date().toISOString(),
+  }
+
+  // Save user
+  users.push(newUser)
+  saveAllUsers(users)
+
+  // Auto login after registration
+  saveCurrentUser({ name: newUser.name, email: newUser.email })
   closeAuth()
-  registerForm.reset()
-  showLoginForm()
+
+  // Show success message
+  alert("¡Cuenta creada exitosamente! Bienvenido, " + name + "!")
+}
+
+function handleLogout() {
+  if (confirm("¿Estás seguro que deseas cerrar sesión?")) {
+    clearCurrentUser()
+    closeAuth()
+    alert("Sesión cerrada exitosamente")
+  }
+}
+
+function handleForgotPassword() {
+  const email = prompt("Ingresa tu email para recuperar tu contraseña:")
+
+  if (!email) return
+
+  if (!isValidEmail(email)) {
+    alert("Por favor, ingresa un email válido")
+    return
+  }
+
+  const users = getAllUsers()
+  const user = users.find((u) => u.email === email)
+
+  if (!user) {
+    alert("No existe una cuenta con ese email")
+    return
+  }
+
+  // In a real app, this would send an email
+  // For now, we'll just show the password (NOT SECURE - only for demo)
+  alert(
+    "Tu contraseña es: " +
+      user.password +
+      "\n\n(En una aplicación real, recibirías un email para restablecer tu contraseña)",
+  )
 }
 
 function openProductDetails(productId) {

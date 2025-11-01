@@ -828,6 +828,96 @@ body {
   background-color: rgba(192, 38, 211, 0.1);
 }
 
+/* Added error message styles */
+.auth-error {
+  padding: 0.75rem 1rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--destructive);
+  border-radius: var(--radius);
+  color: var(--destructive);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Added success message styles */
+.auth-success {
+  padding: 0.75rem 1rem;
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid #22c55e;
+  border-radius: var(--radius);
+  color: #22c55e;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Added forgot password button styles */
+.auth-forgot-btn {
+  width: 100%;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.auth-forgot-btn:hover {
+  text-decoration: underline;
+}
+
+/* Added user info display styles */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.user-avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: var(--destructive);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
 /* Added textarea styles for help form */
 .form-textarea {
   width: 100%;
