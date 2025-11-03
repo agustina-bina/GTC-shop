@@ -5,6 +5,7 @@ let filteredProducts = []
 let products = []
 let cart = []
 let currentUser = null
+let highContrastMode = false
 
 // DOM Elements
 let searchInput, searchInputMobile, categoryFilter, sortOrder, productsGrid, resultsCount, noResults, pagination
@@ -34,6 +35,7 @@ let accountBtn,
   registerPasswordConfirmToggle
 let productDetailsSidebar, productDetailsOverlay, productDetailsClose, productDetailsContent
 let helpBtn, helpSidebar, helpOverlay, helpClose, helpForm
+let highContrastBtn, highContrastBtnMobile
 
 // Initialize
 function init() {
@@ -95,6 +97,9 @@ function init() {
   helpClose = document.getElementById("helpClose")
   helpForm = document.getElementById("helpForm")
 
+  highContrastBtn = document.getElementById("highContrastBtn")
+  highContrastBtnMobile = document.getElementById("highContrastBtnMobile")
+
   console.log("[v0] DOM elements found:", {
     searchInput: !!searchInput,
     categoryFilter: !!categoryFilter,
@@ -103,11 +108,13 @@ function init() {
     accountBtn: !!accountBtn,
     productDetailsSidebar: !!productDetailsSidebar,
     helpBtn: !!helpBtn,
+    highContrastBtn: !!highContrastBtn,
   })
 
   filteredProducts = [...products]
   loadCart()
   loadCurrentUser()
+  loadHighContrastPreference()
   renderProducts()
   setupEventListeners()
 
@@ -150,6 +157,9 @@ function setupEventListeners() {
   if (forgotPasswordBtn) {
     forgotPasswordBtn.addEventListener("click", handleForgotPassword)
   }
+
+  highContrastBtn.addEventListener("click", toggleHighContrast)
+  highContrastBtnMobile.addEventListener("click", toggleHighContrast)
 }
 
 function handleSearch(e) {
@@ -323,6 +333,12 @@ function addToCart(productId) {
   if (!product) return
 
   const existingItem = cart.find((item) => item.id === productId)
+  const currentQuantity = existingItem ? existingItem.quantity : 0
+
+  if (currentQuantity + 1 > product.stock) {
+    alert(`Lo sentimos, solo hay ${product.stock} unidades disponibles de este producto.`)
+    return
+  }
 
   if (existingItem) {
     existingItem.quantity += 1
@@ -351,7 +367,17 @@ function updateQuantity(productId, change) {
   const item = cart.find((item) => item.id === productId)
   if (!item) return
 
-  item.quantity += change
+  const newQuantity = item.quantity + change
+
+  if (newQuantity > 0) {
+    const product = products.find((p) => p.id === productId)
+    if (product && newQuantity > product.stock) {
+      alert(`Lo sentimos, solo hay ${product.stock} unidades disponibles de este producto.`)
+      return
+    }
+  }
+
+  item.quantity = newQuantity
 
   if (item.quantity <= 0) {
     removeFromCart(productId)
@@ -884,6 +910,25 @@ function handleHelpSubmit(e) {
   alert("¡Gracias por tu consulta! Te responderemos a la brevedad.")
   closeHelp()
   helpForm.reset()
+}
+
+function loadHighContrastPreference() {
+  const saved = localStorage.getItem("highContrastMode")
+  if (saved === "true") {
+    highContrastMode = true
+    document.body.classList.add("high-contrast")
+  }
+}
+
+function toggleHighContrast() {
+  highContrastMode = !highContrastMode
+  if (highContrastMode) {
+    document.body.classList.add("high-contrast")
+    localStorage.setItem("highContrastMode", "true")
+  } else {
+    document.body.classList.remove("high-contrast")
+    localStorage.setItem("highContrastMode", "false")
+  }
 }
 
 // Initialize on page load

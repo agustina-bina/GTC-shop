@@ -11,6 +11,8 @@
   --card: #1a1525;
   --card-foreground: #fafafa;
   --primary: #c026d3;
+  /* Added primary-foreground variable for button text */
+  --primary-foreground: #ffffff;
   --primary-hover: #a21caf;
   --secondary: #d946ef;
   --muted: #2d2438;
@@ -20,6 +22,86 @@
   --input: #221a2e;
   --destructive: #ef4444;
   --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/* Added high contrast mode styles for better visibility */
+body.high-contrast {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  /* Changed primary color to white with black text for better button readability */
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --primary-hover: #f0f0f0;
+  --secondary: #00ffff;
+  --muted: #333333;
+  --muted-foreground: #ffffff;
+  --accent: #00ff00;
+  --border: #ffffff;
+  --input: #1a1a1a;
+  --destructive: #ff0000;
+}
+
+body.high_contrast * {
+  border-color: var(--border) !important;
+}
+
+body.high_contrast .product-title,
+body.high_contrast .product-description,
+body.high_contrast .cart-item-name,
+body.high_contrast .form-label,
+body.high_contrast .user-name,
+body.high_contrast .product-details-title,
+body.high_contrast .product-details-description {
+  color: #ffffff !important;
+}
+
+body.high_contrast .header-btn,
+body.high_contrast .header-btn-icon,
+body.high_contrast .nav-link {
+  color: #ffffff !important;
+}
+
+body.high_contrast .header-btn:hover,
+body.high_contrast .header-btn-icon:hover,
+body.high_contrast .nav-link:hover {
+  color: var(--primary) !important;
 }
 
 body {
@@ -393,7 +475,8 @@ body {
 .product-btn {
   padding: 0.5rem 1rem;
   background-color: var(--primary);
-  color: white;
+  /* Changed from hardcoded white to CSS variable for high contrast support */
+  color: var(--primary-foreground);
   border: none;
   border-radius: var(--radius);
   font-size: 0.875rem;
@@ -686,7 +769,8 @@ body {
   width: 100%;
   padding: 1rem;
   background-color: var(--primary);
-  color: white;
+  /* Changed from hardcoded white to CSS variable */
+  color: var(--primary-foreground);
   border: none;
   border-radius: var(--radius);
   font-size: 1rem;
@@ -791,7 +875,8 @@ body {
   width: 100%;
   padding: 0.875rem 1rem;
   background-color: var(--primary);
-  color: white;
+  /* Changed from hardcoded white to CSS variable */
+  color: var(--primary-foreground);
   border: none;
   border-radius: var(--radius);
   font-size: 1rem;
@@ -936,122 +1021,4 @@ body {
 
 .form-textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(192, 38, 211, 0.2);
-}
-
-/* Added product details panel styles */
-.product-details-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0;
-}
-
-.product-details-image {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  background-color: var(--muted);
-}
-
-.product-details-info {
-  padding: 2rem;
-}
-
-.product-details-category {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--primary);
-  background-color: rgba(192, 38, 211, 0.1);
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  margin-bottom: 1rem;
-}
-
-.product-details-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-.product-details-description {
-  font-size: 1rem;
-  color: var(--muted-foreground);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.product-details-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 1.5rem;
-  background-color: var(--muted);
-  border-radius: var(--radius);
-  margin-bottom: 1.5rem;
-}
-
-.product-details-meta-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.875rem;
-}
-
-.product-details-meta-label {
-  color: var(--muted-foreground);
-}
-
-.product-details-meta-value {
-  font-weight: 600;
-  color: var(--foreground);
-}
-
-.product-details-price {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-}
-
-.product-details-stock {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-  margin-bottom: 1.5rem;
-}
-
-.product-details-stock-indicator {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background-color: var(--primary);
-}
-
-.product-details-stock.low .product-details-stock-indicator {
-  background-color: var(--destructive);
-}
-
-.product-details-add-btn {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  border-radius: var(--radius);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.product-details-add-btn:hover {
-  background-color: var(--primary-hover);
-}
+  box-shadow: 0 0 0 2px rgba(1\)}

@@ -1,11 +1,11 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, ShoppingCart, User, MessageCircle } from "lucide-react"
+import { Search, ShoppingCart, User, MessageCircle, Eye } from "lucide-react"
 import { products } from "@/lib/products-data"
 
 export function ProductsPage() {
@@ -13,29 +13,45 @@ export function ProductsPage() {
   const [categoryFilter, setCategoryFilter] = useState("all")
   const [sortOrder, setSortOrder] = useState("default")
   const [currentPage, setCurrentPage] = useState(1)
+  const [highContrast, setHighContrast] = useState(false)
   const itemsPerPage = 12
 
-  // Get unique categories
+  useEffect(() => {
+    const saved = localStorage.getItem("highContrastMode")
+    if (saved === "true") {
+      setHighContrast(true)
+      document.body.classList.add("high-contrast")
+    }
+  }, [])
+
+  const toggleHighContrast = () => {
+    const newValue = !highContrast
+    setHighContrast(newValue)
+    if (newValue) {
+      document.body.classList.add("high-contrast")
+      localStorage.setItem("highContrastMode", "true")
+    } else {
+      document.body.classList.remove("high-contrast")
+      localStorage.setItem("highContrastMode", "false")
+    }
+  }
+
   const categories = useMemo(() => {
     const cats = new Set(products.map((p) => p.category))
     return ["all", ...Array.from(cats)]
   }, [])
 
-  // Filter and sort products
   const filteredProducts = useMemo(() => {
     let filtered = products
 
-    // Search filter
     if (searchTerm) {
       filtered = filtered.filter((product) => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
     }
 
-    // Category filter
     if (categoryFilter !== "all") {
       filtered = filtered.filter((product) => product.category === categoryFilter)
     }
 
-    // Sort
     if (sortOrder === "price-asc") {
       filtered = [...filtered].sort((a, b) => a.price - b.price)
     } else if (sortOrder === "price-desc") {
@@ -45,7 +61,6 @@ export function ProductsPage() {
     return filtered
   }, [searchTerm, categoryFilter, sortOrder])
 
-  // Pagination
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage)
   const paginatedProducts = filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 
@@ -54,7 +69,6 @@ export function ProductsPage() {
       <header className="border-b border-border/40 bg-card/30 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between gap-4">
-            {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="text-2xl font-bold tracking-wider text-muted-foreground">
                 <span className="text-primary">GTC</span>
@@ -63,7 +77,6 @@ export function ProductsPage() {
               </div>
             </div>
 
-            {/* Search Bar - Desktop */}
             <div className="hidden md:flex flex-1 max-w-2xl">
               <div className="relative w-full">
                 <Input
@@ -79,8 +92,17 @@ export function ProductsPage() {
               </div>
             </div>
 
-            {/* Right Icons */}
             <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="hidden md:flex gap-2 text-muted-foreground"
+                onClick={toggleHighContrast}
+                title="Alternar alto contraste"
+              >
+                <Eye className="h-4 w-4" />
+                <span className="text-sm">Alto Contraste</span>
+              </Button>
               <Button variant="ghost" size="sm" className="hidden md:flex gap-2 text-muted-foreground">
                 <MessageCircle className="h-4 w-4" />
                 <span className="text-sm">Ayuda</span>
@@ -93,7 +115,15 @@ export function ProductsPage() {
                 <User className="h-4 w-4" />
                 <span className="text-sm">Mi cuenta</span>
               </Button>
-              {/* Mobile Icons */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                onClick={toggleHighContrast}
+                title="Alternar alto contraste"
+              >
+                <Eye className="h-5 w-5" />
+              </Button>
               <Button variant="ghost" size="icon" className="md:hidden">
                 <ShoppingCart className="h-5 w-5" />
               </Button>
@@ -103,7 +133,6 @@ export function ProductsPage() {
             </div>
           </div>
 
-          {/* Search Bar - Mobile */}
           <div className="md:hidden mt-3">
             <div className="relative">
               <Input
@@ -153,10 +182,8 @@ export function ProductsPage() {
       </section>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Filters Section */}
         <div className="mb-8 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Category Filter */}
             <Select
               value={categoryFilter}
               onValueChange={(value) => {
@@ -176,7 +203,6 @@ export function ProductsPage() {
               </SelectContent>
             </Select>
 
-            {/* Sort */}
             <Select value={sortOrder} onValueChange={setSortOrder}>
               <SelectTrigger className="bg-card border-border">
                 <SelectValue placeholder="Ordenar por" />
@@ -189,7 +215,6 @@ export function ProductsPage() {
             </Select>
           </div>
 
-          {/* Results count */}
           <div className="text-sm text-muted-foreground">
             {filteredProducts.length === 0 ? (
               <p className="text-center py-8 text-lg">No se encontraron productos que coincidan con tu búsqueda</p>
@@ -201,7 +226,6 @@ export function ProductsPage() {
           </div>
         </div>
 
-        {/* Products Grid */}
         {filteredProducts.length > 0 && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
@@ -239,7 +263,6 @@ export function ProductsPage() {
               ))}
             </div>
 
-            {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center gap-2 flex-wrap">
                 <Button
